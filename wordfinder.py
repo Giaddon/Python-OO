@@ -24,3 +24,30 @@ class WordFinder:
         """ randomply picks a word from the list"""
         return choice(self.words)
         
+class SpecialWordFinder(WordFinder):
+    """"""
+    def __init__(self, file_path):
+        """DOCSTRING"""
+        super().__init__(file_path)
+
+    def __createList__(self):
+        """DOCSTRING"""
+        file_content = open(self.file_path)
+        words_list = []
+        for line in file_content:
+            clean_line = line.strip()
+            if clean_line and not clean_line[0] == "#":
+                words_list.append(clean_line)
+        return words_list
+
+
+swf = SpecialWordFinder("/Users/Graham/Documents/Code/python-oo/subclass.txt")
+
+print(swf.words)
+
+
+
+
+
+
+
